@@ -1,7 +1,7 @@
 /**
  * @file Viewer.cc
  * @author guoqing (1337841346@qq.com)
- * @brief 查看器的实现 da gang wo 。。。
+ * @brief 查看器的实现 da gang wo 。。。paper 中国
  * @version 0.1
  * @date 2019-02-19
  * 
