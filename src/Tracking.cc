@@ -939,12 +939,13 @@ void Tracking::MonocularInitialization()
         vector<bool> vbTriangulated; // Triangulated Correspondences (mvIniMatches)
 
         // Step 5 通过H模型或F模型进行单目初始化，得到两帧间相对运动、初始MapPoints
-        if(mpInitializer->Initialize(
+        bool init_suc = mpInitializer->Initialize(
             mCurrentFrame,      //当前帧
             mvIniMatches,       //当前帧和参考帧的特征点的匹配关系
             Rcw, tcw,           //初始化得到的相机的位姿
             mvIniP3D,           //进行三角化得到的空间点集合
-            vbTriangulated))    //以及对应于mvIniMatches来讲,其中哪些点被三角化了
+            vbTriangulated);     //以及对应于mvIniMatches来讲,其中哪些点被三角化了
+        if(init_suc)    
         {
             // Step 6 初始化成功后，删除那些无法进行三角化的匹配点
             for(size_t i=0, iend=mvIniMatches.size(); i<iend;i++)
